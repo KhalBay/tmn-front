@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-    base: '/tmn-front/', // Замените на название вашего репозитория
+    base: '/tmn-front/',
     plugins: [
         vue(),
         vueJsx(),
