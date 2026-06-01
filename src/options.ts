@@ -1,0 +1,125 @@
+const unitList = ['шт.', 'упак'];
+
+export const workTypeOptions = [
+    { label: 'Канализация', value: 'Канализация' },
+];
+
+export const floorOptions = [
+    { label: '1 этаж 90м²', value: 'floor1_90' },
+    { label: '1 этаж 100м²', value: 'floor1_100' },
+    { label: '2 этажа 130м²', value: 'floor2_130' },
+    { label: '2 этажа 170м²', value: 'floor2_170' },
+];
+
+export const floorTemplates = {
+    floor1_90: [
+        { name: 'Рубероид РПП 300 ТУ, 15 м2 (Дегтярск)', quantity: 9, unit: 'шт.', article: 218146 },
+        { name: 'Труба канализационная 50х1,8х500', quantity: 5, unit: 'шт.', article: 566655 },
+        { name: 'Теплоизоляция Энергофлекс Супер 54/13 (1 шт = 2 м)', quantity: 1, unit: 'шт.', article: 41612 },
+        { name: 'Заглушка канализационная 50', quantity: 7, unit: 'шт.', article: 43375 },
+        { name: 'Труба канализационная наружная 110x3,2x500 мм', quantity: 6, unit: 'шт.', article: 150063 },
+        { name: 'Труба канализационная наружная 110x3,2x1000 мм', quantity: 5, unit: 'шт.', article: 43553 },
+        { name: 'Труба канализационная наружная 110x3,2х2000 мм', quantity: 4, unit: 'шт.', article: 43554 },
+        { name: 'Муфта наружная канализационная 110', quantity: 1, unit: 'шт.', article: 41369 },
+        { name: 'Заглушка канализационная 110 мм', quantity: 2, unit: 'шт.', article: 43376 },
+        { name: 'Теплоизоляция Энергофлекс Супер 114/13 (1 ШТ = 2 M)', quantity: 4, unit: 'шт.', article: 42429 },
+        { name: 'Переход (редукция) канализационный длинный 110х50', quantity: 4, unit: 'шт.', article: 43393 },
+        { name: 'Тройник наружный канализационный 110x110 45°', quantity: 6, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 15°', quantity: 1, unit: 'шт.', article: 77125 },
+        { name: 'Отвод наружный канализационный 110 30°', quantity: 1, unit: 'шт.', article: 68482 },
+        { name: 'Отвод наружный канализационный 110 45°', quantity: 6, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 87°', quantity: 3, unit: 'шт.', article: 40982 },
+        { name: 'Отвод крутоизогнутый Д108х3,5', quantity: 2, unit: 'шт.', article: 41132 },
+        { name: 'Круг по металлу отрезной 125х2,5х22 Луга', quantity: 2, unit: 'шт.', article: 1683 },
+        { name: 'Круг по металлу отрезной 230х2,5х22 Луга', quantity: 1, unit: 'шт.', article: 1687 },
+        { name: 'Лента клейкая армированная серебристая 48х25', quantity: 3, unit: 'шт.', article: 39891 },
+    ],
+
+    floor1_100: [
+        { name: 'Рубероид РПП 300 ТУ, 15 м2 (Дегтярск)', quantity: 12, unit: 'шт.', article: 218146 },
+        { name: 'Труба канализационная 50х1,8х500', quantity: 10, unit: 'шт.', article: 566655 },
+        { name: 'Теплоизоляция Энергофлекс Супер 54/13 (1 шт = 2 м)', quantity: 2, unit: 'шт.', article: 41612 },
+        { name: 'Отвод канализационный 50x87,5°', quantity: 4, unit: 'шт.', article: 43387 },
+        { name: 'Заглушка канализационная 50', quantity: 14, unit: 'шт.', article: 43375 },
+        { name: 'Труба канализационная наружная 110x3,2x500 мм', quantity: 12, unit: 'шт.', article: 150063 },
+        { name: 'Труба канализационная наружная 110x3,2x1000 мм', quantity: 4, unit: 'шт.', article: 43553 },
+        { name: 'Труба канализационная наружная 110x3,2х2000 мм', quantity: 8, unit: 'шт.', article: 43554 },
+        { name: 'Муфта наружная канализационная 110', quantity: 2, unit: 'шт.', article: 41369 },
+        { name: 'Заглушка канализационная 110 мм', quantity: 4, unit: 'шт.', article: 43376 },
+        { name: 'Теплоизоляция Энергофлекс Супер 114/13 (1 ШТ = 2 M)', quantity: 8, unit: 'шт.', article: 42429 },
+        { name: 'Переход (редукция) канализационный длинный 110х50', quantity: 4, unit: 'шт.', article: 43393 },
+        { name: 'Тройник наружный канализационный 110x110 45°', quantity: 12, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 15°', quantity: 2, unit: 'шт.', article: 77125 },
+        { name: 'Отвод наружный канализационный 110 30°', quantity: 2, unit: 'шт.', article: 68482 },
+        { name: 'Отвод наружный канализационный 110 45°', quantity: 12, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 87°', quantity: 6, unit: 'шт.', article: 40982 },
+        { name: 'Отвод крутоизогнутый Д108х3,5', quantity: 1, unit: 'шт.', article: 41132 },
+        { name: 'Круг по металлу отрезной 125х2,5х22 Луга', quantity: 4, unit: 'шт.', article: 1683 },
+        { name: 'Круг по металлу отрезной 230х2,5х22 Луга', quantity: 2, unit: 'шт.', article: 1687 },
+        { name: 'Лента клейкая армированная серебристая 48х25', quantity: 2, unit: 'шт.', article: 39891 },
+        { name: 'Проволка вязальная 1,2x400 (5кг)', quantity: 4, unit: 'шт.', article: 21332 },
+    ],
+
+    floor2_130: [
+        { name: 'Рубероид РПП 300 ТУ, 15 м2 (Дегтярск)', quantity: 10, unit: 'шт.', article: 218146 },
+        { name: 'Труба канализационная 50х1,8х500', quantity: 4, unit: 'шт.', article: 566655 },
+        { name: 'Теплоизоляция Энергофлекс Супер 54/13 (1 шт = 2 м)', quantity: 1, unit: 'шт.', article: 41612 },
+        { name: 'Заглушка канализационная 50', quantity: 4, unit: 'шт.', article: 43375 },
+        { name: 'Труба канализационная наружная 110x3,2x500 мм', quantity: 7, unit: 'шт.', article: 150063 },
+        { name: 'Труба канализационная наружная 110x3,2x1000 мм', quantity: 3, unit: 'шт.', article: 43553 },
+        { name: 'Труба канализационная наружная 110x3,2х2000 мм', quantity: 4, unit: 'шт.', article: 43554 },
+        { name: 'Муфта наружная канализационная 110', quantity: 1, unit: 'шт.', article: 41369 },
+        { name: 'Заглушка канализационная 110 мм', quantity: 3, unit: 'шт.', article: 43376 },
+        { name: 'Теплоизоляция Энергофлекс Супер 114/13 (1 ШТ = 2 M)', quantity: 7, unit: 'шт.', article: 42429 },
+        { name: 'Переход (редукция) канализационный длинный 110х50', quantity: 4, unit: 'шт.', article: 43393 },
+        { name: 'Тройник наружный канализационный 110x110 45°', quantity: 7, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 15°', quantity: 1, unit: 'шт.', article: 77125 },
+        { name: 'Отвод наружный канализационный 110 30°', quantity: 1, unit: 'шт.', article: 68482 },
+        { name: 'Отвод наружный канализационный 110 45°', quantity: 6, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 87°', quantity: 3, unit: 'шт.', article: 40982 },
+        { name: 'Отвод крутоизогнутый Д108х3,5', quantity: 2, unit: 'шт.', article: 41132 },
+        { name: 'Круг по металлу отрезной 125х2,5х22 Луга', quantity: 2, unit: 'шт.', article: 1683 },
+        { name: 'Круг по металлу отрезной 230х2,5х22 Луга', quantity: 1, unit: 'шт.', article: 1687 },
+        { name: 'Лента клейкая армированная серебристая 48х25', quantity: 3, unit: 'шт.', article: 39891 },
+    ],
+
+    floor2_170: [
+        { name: 'Рубероид РПП 300 ТУ, 15 м2 (Дегтярск)', quantity: 14, unit: 'шт.', article: 218146 },
+        { name: 'Труба канализационная 50х1,8х500', quantity: 5, unit: 'шт.', article: 566655 },
+        { name: 'Теплоизоляция Энергофлекс Супер 54/13 (1 шт = 2 м)', quantity: 1, unit: 'шт.', article: 41612 },
+        { name: 'Отвод канализационный 50x87,5°', quantity: 2, unit: 'шт.', article: 43387 },
+        { name: 'Заглушка канализационная 50', quantity: 7, unit: 'шт.', article: 43375 },
+        { name: 'Труба канализационная наружная 110x3,2x500 мм', quantity: 6, unit: 'шт.', article: 150063 },
+        { name: 'Труба канализационная наружная 110x3,2x1000 мм', quantity: 5, unit: 'шт.', article: 43553 },
+        { name: 'Труба канализационная наружная 110x3,2х2000 мм', quantity: 6, unit: 'шт.', article: 43554 },
+        { name: 'Муфта наружная канализационная 110', quantity: 1, unit: 'шт.', article: 41369 },
+        { name: 'Заглушка канализационная 110 мм', quantity: 2, unit: 'шт.', article: 43376 },
+        { name: 'Теплоизоляция Энергофлекс Супер 114/13 (1 ШТ = 2 M)', quantity: 10, unit: 'шт.', article: 42429 },
+        { name: 'Переход (редукция) канализационный длинный 110х50', quantity: 4, unit: 'шт.', article: 43393 },
+        { name: 'Тройник наружный канализационный 110x110 45°', quantity: 8, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 15°', quantity: 1, unit: 'шт.', article: 77125 },
+        { name: 'Отвод наружный канализационный 110 30°', quantity: 1, unit: 'шт.', article: 68482 },
+        { name: 'Отвод наружный канализационный 110 45°', quantity: 8, unit: 'шт.', article: 41945 },
+        { name: 'Отвод наружный канализационный 110 87°', quantity: 3, unit: 'шт.', article: 40982 },
+        { name: 'Отвод крутоизогнутый Д108х3,5', quantity: 2, unit: 'шт.', article: 41132 },
+        { name: 'Круг по металлу отрезной 125х2,5х22 Луга', quantity: 2, unit: 'шт.', article: 1683 },
+        { name: 'Круг по металлу отрезной 230х2,5х22 Луга', quantity: 1, unit: 'шт.', article: 1687 },
+        { name: 'Лента клейкая армированная серебристая 48х25', quantity: 3, unit: 'шт.', article: 39891 },
+    ],
+};
+
+export const statusOptions = [
+    { label: 'Создана', value: 'created' },
+    { label: 'В обработке', value: 'processing' },
+    { label: 'Завершена', value: 'completed' },
+];
+
+const allNames = [];
+Object.values(floorTemplates).forEach(template => {
+    template.forEach(m => {
+        if (!allNames.includes(m.name)) allNames.push(m.name);
+    });
+});
+
+export const materialOptions = allNames.map(name => ({ label: name, value: name }));
+export const allUnitOptions = unitList.map(unit => ({ label: unit, value: unit }));

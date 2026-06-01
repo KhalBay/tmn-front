@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 
 const routes = [
     {
@@ -28,7 +28,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory('/tmn-front/'),
+    history: createWebHistory(import.meta.env.VITE_BASE_URL),
     routes
 });
 
@@ -36,7 +36,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const token = localStorage.getItem('token');
     if (to.name !== 'Login' && !token) {
-        next({ name: 'Login' });
+        next({name: 'Login'});
     } else {
         next();
     }

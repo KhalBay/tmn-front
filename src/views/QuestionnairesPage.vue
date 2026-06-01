@@ -16,15 +16,18 @@
         :loading="loading"
         :row-key="(row) => row.id"
         striped
+        virtual-scroll
+        :scroll-x="1200"
+        max-height="auto"
     />
   </n-space>
 </template>
 
 <script setup>
-import { ref, h, onMounted } from 'vue';
+import { h, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { NButton, NTag, NSpace, NDataTable, NH2, NTable, NIcon } from 'naive-ui';
-import { EditOutlined, DeleteOutlined } from '@vicons/antd';
+import { NButton, NDataTable, NH2, NIcon, NSpace, NTable, NTag } from 'naive-ui';
+import { DeleteOutlined, EditOutlined } from '@vicons/antd';
 import { useAuthStore } from '../stores/auth';
 import httpClient from '../api/httpClient';
 
@@ -37,14 +40,7 @@ const columns = [
   {
     type: 'expand',
     renderExpand: (row) => {
-      if (!row.materials || row.materials.length === 0) {
-        return h('div', {
-          style: 'padding: 16px; color: #999; text-align: center;'
-        }, 'Нет материалов');
-      }
-
-      return h('div', { style: 'padding: 16px;' }, [
-        h('h4', { style: 'margin: 0 0 12px 0;' }, 'Материалы:'),
+      return h('div', {}, [
         h(NTable, {
           bordered: true,
           singleLine: false,
@@ -52,21 +48,21 @@ const columns = [
         }, [
           h('thead', [
             h('tr', [
-              h('th', { style: 'padding: 8px 12px;' }, '№'),
-              h('th', { style: 'padding: 8px 12px;' }, 'Название'),
-              h('th', { style: 'padding: 8px 12px; text-align: right;' }, 'Количество'),
-              h('th', { style: 'padding: 8px 12px;' }, 'Ед. изм.'),
-              h('th', { style: 'padding: 8px 12px; text-align: right;' }, 'Артикул')
+              h('th', { style: 'padding: 4px 6px;' }, '№'),
+              h('th', { style: 'padding: 4px 6px;' }, 'Название'),
+              h('th', { style: 'padding: 4px 6px; text-align: right;' }, 'Количество'),
+              h('th', { style: 'padding: 4px 6px;' }, 'Ед. изм.'),
+              h('th', { style: 'padding: 4px 6px; text-align: right;' }, 'Артикул')
             ])
           ]),
           h('tbody',
               row.materials.map((material, idx) =>
                   h('tr', { key: material.id }, [
-                    h('td', { style: 'padding: 8px 12px;' }, idx + 1),
-                    h('td', { style: 'padding: 8px 12px;' }, material.name),
-                    h('td', { style: 'padding: 8px 12px; text-align: right;' }, material.quantity),
-                    h('td', { style: 'padding: 8px 12px;' }, material.unit),
-                    h('td', { style: 'padding: 8px 12px; text-align: right;' }, material.article)
+                    h('td', { style: 'padding: 4px 6px;' }, idx + 1),
+                    h('td', { style: 'padding: 4px 6px;' }, material.name),
+                    h('td', { style: 'padding: 4px 6px; text-align: right;' }, material.quantity),
+                    h('td', { style: 'padding: 4px 6px;' }, material.unit),
+                    h('td', { style: 'padding: 4px 6px; text-align: right;' }, material.article)
                   ])
               )
           )
@@ -75,7 +71,7 @@ const columns = [
     }
   },
   { title: 'ID', key: 'id', width: 60 },
-  { title: 'Название', key: 'title', ellipsis: { tooltip: true } },
+  { title: 'Тип работ', key: 'work_type', ellipsis: { tooltip: true }, width: 150 },
   { title: 'Адрес', key: 'address', ellipsis: { tooltip: true }, width: 180 },
   { title: 'Телефон', key: 'phone', width: 140 },
   {
@@ -103,6 +99,7 @@ const columns = [
     title: 'Действия',
     key: 'actions',
     width: 100,
+    // НОВАЯ СТР. скачивание материалов, пдф с оринтаацией под телефон
     render: (row) => h(NSpace, { justify: 'center' }, () => [
       h(
           NButton,
@@ -136,7 +133,7 @@ const fetchQuestionnaires = async () => {
   loading.value = true;
   try {
     const { data } = await httpClient.get('/questionnaires');
-    console.log('Полученные данные:', data);
+    // console.log('Полученные данные:', data);
     questionnaires.value = data;
   } catch (err) {
     console.error(err);
@@ -146,7 +143,7 @@ const fetchQuestionnaires = async () => {
 };
 
 const editQuestionnaire = (id) => {
-  router.push(`/questionnaires/${id}/edit`);
+  router.push({ name: 'EditQuestionnaire', params: { id } });
 };
 
 const deleteQuestionnaire = async (id) => {
