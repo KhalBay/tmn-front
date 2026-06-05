@@ -43,20 +43,21 @@
                   size="small"
                   tag
                   filterable
-                  :disabled="selectedTemplate.length > 0"
+                  :disabled="selectedTemplate"
               />
             </n-form-item>
-            <n-form-item label="Кол-во" size="small" style="flex: 0.5">
+            <n-form-item label="Кол-во" size="small" style="flex: 1">
               <n-input-number v-model:value="material.quantity" :min="0" size="small"/>
             </n-form-item>
-            <n-form-item label="Ед. изм." size="small" style="flex: 0.5">
+            <n-form-item label="Ед. изм." size="small" style="flex: 1">
               <n-select
                   v-model:value="material.unit"
                   :options="allUnitOptions"
                   size="small"
                   tag
                   filterable
-                  :disabled="selectedTemplate.length > 0"
+                  :disabled="selectedTemplate"
+
 
               />
             </n-form-item>
@@ -65,7 +66,8 @@
       </n-space>
 
 <!--      <n-flex>-->
-        <n-button dashed @click="addMaterial()" style="margin-top: 12px; flex:1;">
+        <n-button dashed @click="addMaterial()" style="margin-top: 12px; flex:1;"
+                v-if="!selectedTemplate"        >
           +1 (Добавить материал)
         </n-button>
 <!--        <n-button dashed @click="addMaterial(10)" style="margin-top: 12px; flex: 1;">-->
@@ -73,11 +75,11 @@
 <!--        </n-button>-->
 <!--      </n-flex>-->
 
-      <n-space style="margin-top: 24px;">
-        <n-button type="primary" @click="handleSubmit" :loading="saving">
+      <n-space style="margin-top: 24px;" justify="end">
+        <n-button @click="router.push({ name: 'Questionnaires' })">Отмена</n-button>
+        <n-button type="primary" @click="handleSubmit" :loading="saving" >
           {{ isEdit ? 'Сохранить' : 'Создать' }}
         </n-button>
-        <n-button @click="router.push({ name: 'Questionnaires' })">Отмена</n-button>
       </n-space>
     </n-form>
   </n-card>
