@@ -140,10 +140,6 @@ const addMaterial = (quantity = 1) => {
   form.value.materials.push(...emptyMaterials)
 };
 
-const removeMaterial = (index) => {
-  form.value.materials.splice(index, 1);
-};
-
 const fetchQuestionnaire = async () => {
   try {
     const { data } = await httpClient.get(`/questionnaires/${route.params.id}`);
