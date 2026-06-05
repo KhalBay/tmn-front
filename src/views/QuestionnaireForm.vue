@@ -43,6 +43,7 @@
                   size="small"
                   tag
                   filterable
+                  :disabled="selectedTemplate.length > 0"
               />
             </n-form-item>
             <n-form-item label="Кол-во" size="small" style="flex: 0.5">
@@ -55,6 +56,8 @@
                   size="small"
                   tag
                   filterable
+                  :disabled="selectedTemplate.length > 0"
+
               />
             </n-form-item>
           </n-flex>
