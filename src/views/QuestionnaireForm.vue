@@ -156,7 +156,7 @@ const fetchQuestionnaire = async () => {
       }))
     };
   } catch (err) {
-    alert('Ошибка загрузки анкет');
+    alert('Ошибка загрузки анкеты');
     router.push({ name: 'Questionnaires' });
   }
 };
