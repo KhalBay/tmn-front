@@ -9,7 +9,7 @@
         />
       </n-form-item>
 
-      <n-form-item label="Готовые шаблоны" v-if="form.work_type === 'Канализация'">
+      <n-form-item label="Готовые шаблоны" v-show="form.work_type === 'канализация'">
         <n-select
             v-model:value="selectedTemplate"
             filterable
@@ -18,6 +18,8 @@
             @update:value="applyTemplate"
         />
       </n-form-item>
+
+
 
       <n-form-item label="Адрес" required>
         <n-input v-model:value="form.address" placeholder="ул. Ленина, 45"/>
@@ -35,33 +37,38 @@
 
       <n-space vertical>
         <div v-for="(material, index) in form.materials" :key="index" class="material-card">
-          <n-flex size="small" align="stretch" justify="stretch">
-            <n-form-item label="Название" size="small" style="flex: 2">
-              <n-select
-                  v-model:value="material.name"
-                  :options="materialOptions"
-                  size="small"
-                  tag
-                  filterable
-                  :disabled="selectedTemplate"
-              />
-            </n-form-item>
-            <n-form-item label="Кол-во" size="small" style="flex: 1">
-              <n-input-number v-model:value="material.quantity" :min="0" size="small"/>
-            </n-form-item>
-            <n-form-item label="Ед. изм." size="small" style="flex: 1">
-              <n-select
-                  v-model:value="material.unit"
-                  :options="allUnitOptions"
-                  size="small"
-                  tag
-                  filterable
-                  :disabled="selectedTemplate"
-
-
-              />
-            </n-form-item>
-          </n-flex>
+          <n-grid cols="2 600:3" :x-gap="12">
+            <n-gi span="2 600:1">
+              <n-form-item label="Название" size="small">
+                <n-select
+                    class="w-full"
+                    v-model:value="material.name"
+                    :options="materialOptions"
+                    size="small"
+                    tag
+                    filterable
+                    :disabled="selectedTemplate"
+                />              </n-form-item>
+            </n-gi>
+            <n-gi>
+              <n-form-item label="Кол-во" size="small">
+                <n-input-number v-model:value="material.quantity" :min="0" size="small"/>
+              </n-form-item>
+            </n-gi>
+            <n-gi>
+              <n-form-item label="Ед. изм." size="small">
+                <n-select
+                    v-model:value="material.unit"
+                    :options="allUnitOptions"
+                    size="small"
+                    tag
+                    filterable
+                    :disabled="selectedTemplate"
+                />
+              </n-form-item>
+            </n-gi>
+          </n-grid>
+          <n-divider class="my-0"></n-divider>
         </div>
       </n-space>
 
@@ -75,12 +82,12 @@
 <!--        </n-button>-->
 <!--      </n-flex>-->
 
-      <n-space style="margin-top: 24px;" justify="end">
-        <n-button @click="router.push({ name: 'Questionnaires' })">Отмена</n-button>
-        <n-button type="primary" @click="handleSubmit" :loading="saving" >
+      <n-flex style="margin-top: 24px;" justify="space-between">
+        <n-button style="flex: 1" @click="router.push({ name: 'Questionnaires' })">Отмена</n-button>
+        <n-button style="flex: 1" type="primary" @click="handleSubmit" :loading="saving" >
           {{ isEdit ? 'Сохранить' : 'Создать' }}
         </n-button>
-      </n-space>
+      </n-flex>
     </n-form>
   </n-card>
 </template>
@@ -97,7 +104,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { NButton, NCard, NDivider, NFlex, NForm, NFormItem, NInput, NInputNumber, NSelect, NSpace } from 'naive-ui';
+import { NButton, NCard, NDivider, NFlex, NForm, NFormItem, NInput, NInputNumber, NSelect, NSpace, NGrid, NGi } from 'naive-ui';
 import httpClient from '../api/httpClient';
 import {
   materialOptions,

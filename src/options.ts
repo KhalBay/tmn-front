@@ -1,8 +1,11 @@
 const unitList = ['шт.', 'упак'];
 
 export const workTypeOptions = [
-    { label: 'Канализация', value: 'Канализация' },
+    { label: 'Канализация', value: 'канализация' },
+    { label: 'Забор', value: 'забор' },
 ];
+
+
 
 export const floorOptions = [
     { label: '1 этаж 90м²', value: 'floor1_90' },
@@ -10,6 +13,22 @@ export const floorOptions = [
     { label: '2 этажа 130м²', value: 'floor2_130' },
     { label: '2 этажа 170м²', value: 'floor2_170' },
 ];
+
+export const fenceTemplates = [
+    { name: 'Труба круглая, d=73 мм (2,5 м)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Труба круглая, d=73 мм (3,0 м)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Труба квадратная, 6×6 см (3,0 м)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Труба квадратная, 10×10 см (3,0 м)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Прожилины', quantity: 0, unit: 'шт.', article: 218150 },
+    { name: 'Профнастил С-8 1200x1800 (шоколад)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Профнастил С-8 1200x2000 (шоколад)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Профнастил С-8 1200x1800 (графит)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Профнастил С-8 1200x2000 (графит)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Профнастил С-8 1200x1800 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Профнастил С-8 1200x2000 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0 }
+];
+
+
 
 export const floorTemplates = {
     floor1_90: [
