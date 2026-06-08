@@ -5,8 +5,6 @@ export const workTypeOptions = [
     { label: 'Забор', value: 'забор' },
 ];
 
-
-
 export const floorOptions = [
     { label: '1 этаж 90м²', value: 'floor1_90' },
     { label: '1 этаж 100м²', value: 'floor1_100' },
@@ -27,8 +25,6 @@ export const fenceTemplates = [
     { name: 'Профнастил С-8 1200x1800 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0 },
     { name: 'Профнастил С-8 1200x2000 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0 }
 ];
-
-
 
 export const floorTemplates = {
     floor1_90: [
@@ -133,12 +129,43 @@ export const statusOptions = [
     { label: 'Завершена', value: 'completed' },
 ];
 
-const allNames = [];
-Object.values(floorTemplates).forEach(template => {
-    template.forEach(m => {
-        if (!allNames.includes(m.name)) allNames.push(m.name);
-    });
-});
+const mapOptions = (input: any): any => {
+    if (Array.isArray(input)) {
+        return input.map((item: any) => {
+            // Если уже есть label и value - возвращаем как есть
+            if (item.label && item.value !== undefined) {
+                return { ...item };
+            }
+            // Если есть name но нет label - используем name как label и value
+            if (item.name && !item.label) {
+                return { label: item.name, value: item.name, ...item };
+            }
+            // Если строка - создаем label и value из строки
+            if (typeof item === 'string') {
+                return { label: item, value: item };
+            }
+            return item;
+        });
+    }
 
-export const materialOptions = allNames.map(name => ({ label: name, value: name }));
-export const allUnitOptions = unitList.map(unit => ({ label: unit, value: unit }));
+    if (typeof input === 'object' && input !== null && !Array.isArray(input)) {
+        const result: any = {};
+
+        Object.entries(input).forEach(([key, value]) => {
+            if (Array.isArray(value)) {
+                result[key] = mapOptions(value);
+            }
+            else if (typeof value === 'object' && value !== null) {
+                result[key] = mapOptions(value);
+            }
+        });
+
+        return result;
+    }
+
+    return input;
+};
+
+export const optionFlat = mapOptions(unitList);
+export const optionFloorTemplates = mapOptions(floorTemplates);
+export const optionFenceTemplates = mapOptions(fenceTemplates);

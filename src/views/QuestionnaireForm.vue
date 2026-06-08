@@ -43,7 +43,7 @@
                 <n-select
                     class="w-full"
                     v-model:value="material.name"
-                    :options="materialOptions"
+                    :options="optionFenceTemplates"
                     size="small"
                     tag
                     filterable
@@ -59,7 +59,7 @@
               <n-form-item label="Ед. изм." size="small">
                 <n-select
                     v-model:value="material.unit"
-                    :options="allUnitOptions"
+                    :options="optionFlat"
                     size="small"
                     tag
                     filterable
@@ -107,12 +107,10 @@ import { useRoute, useRouter } from 'vue-router';
 import { NButton, NCard, NDivider, NFlex, NForm, NFormItem, NInput, NInputNumber, NSelect, NSpace, NGrid, NGi } from 'naive-ui';
 import httpClient from '../api/httpClient';
 import {
-  materialOptions,
-  allUnitOptions,
   floorTemplates,
   workTypeOptions,
   floorOptions,
-  statusOptions
+  statusOptions, fenceTemplates, optionFlat, optionFenceTemplates
 } from '@/options.ts'
 
 const route = useRoute();
