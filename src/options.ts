@@ -12,19 +12,20 @@ export const floorOptions = [
     { label: '2 этажа 170м²', value: 'floor2_170' },
 ];
 
-export const fenceTemplates = [
+export const fenceTemplates = {
+    default: [
     { name: 'Труба круглая, d=73 мм (2,5 м)', quantity: 0, unit: 'шт.', article: 0 },
     { name: 'Труба круглая, d=73 мм (3,0 м)', quantity: 0, unit: 'шт.', article: 0 },
     { name: 'Труба квадратная, 6×6 см (3,0 м)', quantity: 0, unit: 'шт.', article: 0 },
     { name: 'Труба квадратная, 10×10 см (3,0 м)', quantity: 0, unit: 'шт.', article: 0 },
-    { name: 'Прожилины', quantity: 0, unit: 'шт.', article: 218150 },
-    { name: 'Профнастил С-8 1200x1800 (шоколад)', quantity: 0, unit: 'шт.', article: 0 },
-    { name: 'Профнастил С-8 1200x2000 (шоколад)', quantity: 0, unit: 'шт.', article: 0 },
-    { name: 'Профнастил С-8 1200x1800 (графит)', quantity: 0, unit: 'шт.', article: 0 },
-    { name: 'Профнастил С-8 1200x2000 (графит)', quantity: 0, unit: 'шт.', article: 0 },
-    { name: 'Профнастил С-8 1200x1800 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0 },
-    { name: 'Профнастил С-8 1200x2000 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0 }
-];
+    { name: 'Прожилины', quantity: 0, unit: 'шт.', article: 0 },
+    { name: 'Профнастил С-8 1200x1800 (шоколад)', quantity: 0, unit: 'шт.', article: 0, color: 'choc'  },
+    { name: 'Профнастил С-8 1200x2000 (шоколад)', quantity: 0, unit: 'шт.', article: 0, color: 'choc'  },
+    { name: 'Профнастил С-8 1200x1800 (графит)', quantity: 0, unit: 'шт.', article: 0, color: 'graf'  },
+    { name: 'Профнастил С-8 1200x2000 (графит)', quantity: 0, unit: 'шт.', article: 0, color: 'graf'  },
+    { name: 'Профнастил С-8 1200x1800 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0, color: 'zinc'  },
+    { name: 'Профнастил С-8 1200x2000 (оцинкованный)', quantity: 0, unit: 'шт.', article: 0, color: 'zinc' }
+]};
 
 export const floorTemplates = {
     floor1_90: [

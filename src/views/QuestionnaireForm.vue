@@ -1,15 +1,18 @@
 <template>
-  <n-card :title="isEdit ? 'Редактирование заявки' : 'Новая заявка'" style="max-width: 700px; margin: 0 auto;" size="small">
+    <n-card :title="isEdit ? 'Редактирование заявки' : 'Новая заявка'" style="max-width: 700px; margin: 0 auto;" size="small">
+
+
     <n-form>
       <n-form-item label="Тип работ" required>
         <n-select
             v-model:value="form.work_type"
             placeholder="Выберите тип работ"
             :options="workTypeOptions"
+            @update:value="updateWorkType"
         />
       </n-form-item>
 
-      <n-form-item label="Готовые шаблоны" v-show="form.work_type === 'канализация'">
+      <n-form-item label="Готовые шаблоны" v-show="!isDefaultTemplate">
         <n-select
             v-model:value="selectedTemplate"
             filterable
@@ -37,7 +40,7 @@
 
       <n-space vertical>
         <div v-for="(material, index) in form.materials" :key="index" class="material-card">
-          <n-grid cols="2 600:3" :x-gap="12">
+          <n-grid cols="2" :x-gap="12">
             <n-gi span="2 600:1">
               <n-form-item label="Название" size="small">
                 <n-select
@@ -48,7 +51,8 @@
                     tag
                     filterable
                     :disabled="selectedTemplate"
-                />              </n-form-item>
+                />
+              </n-form-item>
             </n-gi>
             <n-gi>
               <n-form-item label="Кол-во" size="small">
@@ -125,7 +129,7 @@ const emptyMaterial = {
 }
 
 const form = ref({
-  work_type: 'Канализация',
+  work_type: 'канализация',
   address: '',
   phone: '',
   status: 'created',
@@ -135,10 +139,35 @@ const form = ref({
 const selectedTemplate = ref(null);
 const saving = ref(false);
 
+const currentTemplate = computed(()=> {
+  switch(form.value.work_type) {
+    case 'канализация':
+      return floorTemplates
+    case 'забор':
+      return fenceTemplates
+  }
+})
+
+const isDefaultTemplate = computed(() => {
+  return Object.hasOwn(currentTemplate.value, 'default')
+});
+
+
 const applyTemplate = (templateKey) => {
-  if (!templateKey || !floorTemplates[templateKey]) return;
-  form.value.materials = floorTemplates[templateKey].map(m => ({ ...m }));
+  if (!templateKey || !currentTemplate.value[templateKey]) return;
+  if (templateKey === 'default') selectedTemplate.value = 'default'
+  form.value.materials = currentTemplate.value[templateKey].map(m => ({ ...m }));
 };
+
+
+const  updateWorkType = () => {
+  clearField();
+  applyTemplate("default");
+}
+const clearField = () => {
+  form.value.materials = [emptyMaterial];
+  selectedTemplate.value = null;
+}
 
 const addMaterial = (quantity = 1) => {
   const emptyMaterials = new Array(quantity).fill(null).map(() => ({ ...emptyMaterial }));
